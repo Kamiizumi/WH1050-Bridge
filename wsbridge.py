@@ -13,8 +13,8 @@ while True:
     josn = json.loads(output)
     wuformatted = {
         "action": "updateraw",
-        "ID": args[1],
-        "PASSWORD": args[2],
+        "ID": sys.argv[1],
+        "PASSWORD": sys.argv[2],
         "dateutc": josn['time'],
         "windspeedmph": josn['speed'] / 1.609344,
         "windgustmph": josn['gust'] / 1.609344,
