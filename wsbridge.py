@@ -22,7 +22,7 @@ while True:
         "windspeedmph": josn['speed'] / 1.609344,
         "windgustmph": josn['gust'] / 1.609344,
         "humidity": josn['humidity'],
-        "tempf": (josn['temperature_C'] * 1.8) + 32
+        "tempf": reportedTemp.f,
         "dewptf": calculatedDewPoint.f
     }
     requestdata = urllib.urlencode(wuformatted)
