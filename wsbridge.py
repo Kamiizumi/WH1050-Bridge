@@ -3,6 +3,7 @@ import subprocess
 import shlex
 import json
 import urllib
+from meteocalc import Temp, dew_point
 
 args = str(sys.argv)
 
@@ -11,6 +12,8 @@ process = subprocess.Popen(cmdtorun, stdout=subprocess.PIPE)
 while True:
     output = process.stdout.readline()
     josn = json.loads(output)
+    reportedTemp = Temp(josn['temperature_C'], 'c')
+    calculatedDewPoint = dew_point(temperature=reportedTemp, humidity=josn['humidity'])
     wuformatted = {
         "action": "updateraw",
         "ID": sys.argv[1],
@@ -19,7 +22,8 @@ while True:
         "windspeedmph": josn['speed'] / 1.609344,
         "windgustmph": josn['gust'] / 1.609344,
         "humidity": josn['humidity'],
-        "tempf": (josn['temperature_C'] * 1.8) + 32
+        "tempf": reportedTemp.f,
+        "dewptf": calculatedDewPoint.f
     }
     requestdata = urllib.urlencode(wuformatted)
     url = "https://weatherstation.wunderground.com/weatherstation/updateweatherstation.php?%s" % requestdata
