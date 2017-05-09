@@ -5,8 +5,6 @@ import json
 import urllib
 from meteocalc import Temp, dew_point
 
-args = str(sys.argv)
-
 cmdtorun = shlex.split("rtl_433 -R 68 -F json -U -q")
 process = subprocess.Popen(cmdtorun, stdout=subprocess.PIPE)
 while True:
