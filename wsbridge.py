@@ -7,7 +7,7 @@ import json
 import urllib
 from meteocalc import Temp, dew_point
 
-RTL_COMMAND = shlex.split("rtl_433 -R 68 -F json -U -q")
+RTL_COMMAND = shlex.split("rtl_433 -R 69 -F json -U -q")
 RTL_PROCESS = subprocess.Popen(RTL_COMMAND, stdout=subprocess.PIPE)
 while True:
     RTL_PROCESS_OUTPUT = RTL_PROCESS.stdout.readline()
