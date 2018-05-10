@@ -11,7 +11,7 @@ RTL_COMMAND = shlex.split("rtl_433 -R 69 -F json -U -q")
 RTL_PROCESS = subprocess.Popen(RTL_COMMAND, stdout=subprocess.PIPE)
 while True:
     try:
-        RTL_PROCESS_OUTPUT = RTL_PROCESS.stdout.readline()
+        RTL_PROCESS_OUTPUT = RTL_PROCESS.stdout.readline().decode('utf-8')
 
         OUTPUT_AS_JSON = json.loads(RTL_PROCESS_OUTPUT)
         REPORTED_TEMP = Temp(OUTPUT_AS_JSON['temperature_C'], 'c')
