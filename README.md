@@ -6,6 +6,7 @@ Bridges a Fine Offset WH1050 weather station to the Weather Underground service,
 
 To use the script the following hardware and software is required:
 
+- Python 3+
 - [WH1050 / WH1070](http://www.foshk.com/weather_professional/wh1070.html) based weather station
   - Re-branded example: [Maplin N25FR](http://www.maplin.co.uk/p/wireless-weather-station-n25fr)
 - An RTL based SDR reciever (see [http://www.rtl-sdr.com/about-rtl-sdr/](http://www.rtl-sdr.com/about-rtl-sdr/) for examples)
