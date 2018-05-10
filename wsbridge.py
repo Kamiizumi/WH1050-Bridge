@@ -5,6 +5,8 @@ import subprocess
 import shlex
 import json
 import urllib
+import urllib.parse
+import urllib.request
 from meteocalc import Temp, dew_point
 
 RTL_COMMAND = shlex.split("rtl_433 -R 69 -F json -U -q")
@@ -35,6 +37,6 @@ while True:
 
         REQUEST_RESULT = urllib.request.urlopen(REQUEST_URL)
         print(REQUEST_RESULT.read().decode('utf-8'))
-    
+
     except Exception as exception:
         print(exception)
